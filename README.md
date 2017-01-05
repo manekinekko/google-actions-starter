@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://cloud.githubusercontent.com/assets/1699357/21663314/b022ace0-d2df-11e6-8713-9f68b1c3ee3b.png" width="350">
 </p>
-<h2 align="center">GAS-S: <a href="https://github.com/manekinekko/google-actions-server">Google Assistant Server</a> Starter</h2>
+<h2 align="center">GAS-S: <a href="https://github.com/manekinekko/google-actions-server">Google Assistant Server</a> Starter <img src="https://circleci.com/gh/manekinekko/google-actions-starter.svg?style=svg"></h2>
 <p align="center">A Node.js server for your <a href="https://developers.google.com/actions/">Google Assistant</a> (and <a href="https://madeby.google.com/home/">Google Home</a>).</p>
 
 <img src="https://cdn-images-1.medium.com/max/2000/1*51-QcjdjlRiy4_ya2NjA2g.png" align="center"/>
