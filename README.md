@@ -1,8 +1,8 @@
-## GAS-S: Google Assistant Server Starter
-
-![image](https://cloud.githubusercontent.com/assets/1699357/21663314/b022ace0-d2df-11e6-8713-9f68b1c3ee3b.png)
-
-A Node.js server for your [Google Assistant](https://developers.google.com/actions/) (and Google Home).
+<p align="center">
+    <img src="https://cloud.githubusercontent.com/assets/1699357/21663314/b022ace0-d2df-11e6-8713-9f68b1c3ee3b.png" width="350"/>
+</p>
+<h2 align="center">GAS-S: <a href="https://github.com/manekinekko/google-actions-server">Google Assistant Server</a> Starter</h2>
+<p align="center">A Node.js server for your Google Assistant (and Google Home).</p>
 
 ## [Action Manifest](https://developers.google.com/actions/develop/sdk/actions) (action.json)
 
