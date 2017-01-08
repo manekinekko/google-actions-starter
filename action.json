@@ -3,14 +3,14 @@
     "agentInfo": {
         "languageCode": "en-US",
         "projectId": "my first action",
-        "voiceName": "male_1"
+        "voiceName": "sfg-vocoded#male_1"
     },
     "actions": [{
         "initialTrigger": {
             "intent": "assistant.intent.action.MAIN"
         },
         "httpExecution": {
-            "url": "https://97cb7c07.ngrok.io"
+            "url": "https://288f8cdb.ngrok.io"
         }
     }]
 }

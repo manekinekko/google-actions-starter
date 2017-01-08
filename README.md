@@ -53,25 +53,24 @@ In the `package.json`, we provide you with the following (handy) scripts:
 
 Tools bunlded by GAS for devs needs:
 
-1. [gactions](https://developers.google.com/actions/tools/gactions-cli): is the command line interface that you use to preview, simulate, and publish an action package.
-1. [nodemon](https://github.com/remy/nodemon): Monitor for any changes in your node.js application and automatically restart the server.
-2. [ngrok](https://github.com/inconshreveable/ngrok): Introspected tunnels to localhost. Allows Google's server to access your local action (while in dev mode)
+1. [gactions](https://developers.google.com/actions/tools/gactions-cli): is the command line interface that you use to preview, simulate, and publish an action package. If you encouter errors with the bundled binary, use the [gactions](https://developers.google.com/actions/tools/gactions-cli) from the official website. GAS includes this just for convenience. 
+2. [nodemon](https://github.com/remy/nodemon): Monitor for any changes in your node.js application and automatically restart the server.
+3. [ngrok](https://github.com/inconshreveable/ngrok): Introspected tunnels to localhost. Allows Google's server to access your local action (while in dev mode)
 
 # Step by Step
 
-0. run `npm install` to install deps
-1. run `npm run ngrok`, and copy the HTTPS generated URL,
-2. update `httpExecution.url` in `actions.json` with this URL,
-3. run `npm run preview`, and **follow the instructions on the terminal**,
+0. run `npm install` to install all deps
+1. run `npm run ngrok` and keep it running in the background,
+3. run `npm run autopreview`, and **follow the instructions on the terminal**,
 4. run `npm start`
-5. run `npm run simulator` to start the simulator in CLI mode (or use Google Home)
+5. run `npm run action:simulate` to start the simulator in CLI mode (or use Google Home)
 6. type in `talk to my first action` or `start my first action`
 
-**HINT:** you can run `npm run build:w` in order to watch and rebuild your files on the fly.
+**HINT #1:** you can run `npm run build:watch` in order to watch and rebuild your files on the fly while you're working on your action.
 
-**HINT:** I you have a Google Home device, you can use it instead of using the simulator.
+**HINT #2:** I you have a Google Home device, you can use it instead of using the simulator.
 
-**NOTE:** If you already have a server where you can host your Node.js project, you can use your own URL in `httpExecution.url` and skip steps 1 and 2.
+**NOTE:** If you already have a dev server where you can host your this project, you can use your own URL in `httpExecution.url` and skip steps 1 and 2. And run `npm run action:preview` instead. See `package.json` for more details.
 
 ## GAS API
 
@@ -82,6 +81,7 @@ See the [GAS documentation](https://github.com/manekinekko/google-actions-server
 - https://github.com/manekinekko/google-actions-rxjs
 - https://github.com/manekinekko/google-actions-twitter
 - https://github.com/manekinekko/google-actions-reader
+- https://github.com/manekinekko/google-actions-learn-angular
 
 ## License
 

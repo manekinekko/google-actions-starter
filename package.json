@@ -24,10 +24,13 @@
         "server": "nodemon dist/action.js",
         "ngrok": "ngrok http 8080",
         "build": "babel lib -d dist",
-        "build:w": "npm run build -- -w",
-        "simulator": "gactions simulate",
-        "preview": "gactions --verbose preview --action_package action.json --invocation_name 'my first action' --preview_mins 1234",
-        "deploy": "npm run build && npm version patch && git push --tags && git push && npm publish"
+        "build:watch": "npm run build -- -w",
+        "action:simulate": "gactions --verbose simulate",
+        "action:preview": "node ./scripts/preview_action.js",
+        "action:config": "node ./scripts/update_action_config.js",
+        "action:autopreview": "npm run action:config && npm run action:preview",
+        "action:deploy": "echo 'coming soon'",
+        "release": "npm run build && npm version patch && git push --tags && git push && npm publish"
     },
     "dependencies": {
         "@manekinekko/google-actions-server": "^2.0.4"
