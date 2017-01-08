@@ -17,7 +17,7 @@
         "initial_trigger": {
             "intent": "my.deeplink.intent",
             "queryPatterns": [
-                { "queryPattern": "know what is today's date" }
+                { "queryPattern": "know what is the date" }
             ]
         },
         "http_execution": {

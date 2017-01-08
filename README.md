@@ -79,6 +79,25 @@ Tools bunlded by GAS for devs needs:
 
 See the [GAS documentation](https://github.com/manekinekko/google-actions-server) from more details.
 
+## Deep Link invocation
+
+In order to make a [deep link invocation](https://developers.google.com/actions/develop/sdk/invocation-and-discovery#deep_link_invocation), you have to provide two things:
+
+1. an invocation query in your `action.json` (see [this example](https://github.com/manekinekko/google-actions-starter/blob/master/action.json#L17-L21))
+2. [an intent](https://github.com/manekinekko/google-actions-starter/blob/master/action.json#L18) (and its implementation [here](https://github.com/manekinekko/google-actions-starter/blob/master/lib/action.js#L58) and [here](https://github.com/manekinekko/google-actions-starter/blob/master/lib/action.js#L42-L51)) that will be triggered when your action will be launched with the invocation query.
+
+Then you just have to start your action like so: 
+
+```
+talk to my first action to <ONE OF THE DEEP LINK QUERIES HERE>
+```
+
+For instance: 
+
+```
+talk to my first action to know what is the date
+```
+
 ## Example projects
 
 - https://github.com/manekinekko/google-actions-rxjs
