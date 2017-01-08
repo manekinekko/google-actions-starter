@@ -40,6 +40,17 @@ var MyAction = function () {
             this.agent.ask('\n            I heard ' + rawInput + '.\n            ' + this.agent.getRandomConversationMessage() + '\n        ');
         }
 
+        // the intent triggered by deep links defined in "action.json"
+
+    }, {
+        key: 'dateIntent',
+        value: function dateIntent(assistant) {
+            this.assistant = assistant;
+            var rawInput = assistant.getRawInput();
+            var date = new Date().toLocaleString();
+            this.agent.ask('<speak>\n        <say-as interpret-as="date" format="mmddyyy" detail="1">\n            ' + date + '\n        </say-as>\n        </speak>');
+        }
+
         // start everything!!
 
     }, {
@@ -48,6 +59,7 @@ var MyAction = function () {
             // register intents and start server
             this.agent.welcome(this.welcomeIntent.bind(this));
             this.agent.intent(_googleActionsServer.ActionServer.intent.action.TEXT, this.textIntent.bind(this));
+            this.agent.intent('my.deeplink.intent', this.dateIntent.bind(this));
             this.agent.listen();
         }
     }]);

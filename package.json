@@ -1,46 +1,46 @@
 {
-  "name": "@manekinekko/google-actions-starter",
-  "description": "A Google Action starter",
-  "version": "1.0.3",
-  "license": "MIT",
-  "main": "index.js",
-  "author": {
-    "name": "Wassim Chegham",
-    "email": "github@wassimchegham.com"
-  },
-  "engines": {
-    "node": "> 5"
-  },
-  "homepage": "https://github.com/manekinekko/google-actions-starter",
-  "bugs": "https://github.com/manekinekko/google-actions-starter/issues",
-  "private": false,
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:manekinekko/google-actions-starter.git"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "start": "npm run server",
-    "server": "nodemon dist/action.js",
-    "ngrok": "ngrok http 8080",
-    "build": "babel lib -d dist",
-    "build:watch": "npm run build -- -w",
-    "action:simulate": "gactions --verbose simulate",
-    "action:preview": "node ./scripts/preview_action.js",
-    "action:config": "node ./scripts/update_action_config.js",
-    "action:autopreview": "npm run action:config && npm run action:preview",
-    "action:deploy": "echo 'coming soon'",
-    "release": "npm run build && npm version patch && git push --tags && git push && npm publish"
-  },
-  "dependencies": {
-    "@manekinekko/google-actions-server": "^2.0.4"
-  },
-  "keywords": [
-    "google",
-    "gactions",
-    "google home",
-    "google assistant",
-    "google actions",
-    "assistant"
-  ]
+    "name": "@manekinekko/google-actions-starter",
+    "description": "A Google Action starter",
+    "version": "1.0.3",
+    "license": "MIT",
+    "main": "index.js",
+    "author": {
+        "name": "Wassim Chegham",
+        "email": "github@wassimchegham.com"
+    },
+    "engines": {
+        "node": "> 5"
+    },
+    "homepage": "https://github.com/manekinekko/google-actions-starter",
+    "bugs": "https://github.com/manekinekko/google-actions-starter/issues",
+    "private": false,
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:manekinekko/google-actions-starter.git"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "start": "npm run build && npm run server",
+        "server": "nodemon dist/action.js",
+        "ngrok": "ngrok http 8080",
+        "build": "babel lib -d dist",
+        "build:watch": "npm run build -- -w",
+        "action:simulate": "gactions simulate",
+        "action:preview": "node ./scripts/preview_action.js",
+        "action:config": "node ./scripts/update_action_config.js -f",
+        "action:autopreview": "npm run action:config && npm run action:preview",
+        "action:deploy": "echo 'coming soon'",
+        "release": "npm run build && npm version patch && git push --tags && git push && npm publish"
+    },
+    "dependencies": {
+        "@manekinekko/google-actions-server": "^2.0.4"
+    },
+    "keywords": [
+        "google",
+        "gactions",
+        "google home",
+        "google assistant",
+        "google actions",
+        "assistant"
+    ]
 }

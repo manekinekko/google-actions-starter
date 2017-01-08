@@ -3,14 +3,25 @@
     "agentInfo": {
         "languageCode": "en-US",
         "projectId": "my first action",
-        "voiceName": "sfg-vocoded#male_1"
+        "voiceName": "male_1"
     },
     "actions": [{
         "initialTrigger": {
             "intent": "assistant.intent.action.MAIN"
         },
         "httpExecution": {
-            "url": "https://288f8cdb.ngrok.io"
+            "url": "https://d00fe3f3.ngrok.io"
+        }
+    }, {
+        "description": "Deep link that speaks back the date",
+        "initial_trigger": {
+            "intent": "my.deeplink.intent",
+            "queryPatterns": [
+                { "queryPattern": "know what is today's date" }
+            ]
+        },
+        "http_execution": {
+            "url": "https://d00fe3f3.ngrok.io"
         }
     }]
 }

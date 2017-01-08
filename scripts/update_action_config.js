@@ -1,15 +1,20 @@
-var fs = require('fs');
-var path = require('path');
-var ngrok = require('./get_public_url');
+const fs = require('fs');
+const path = require('path');
+const ngrok = require('./get_public_url');
 const actionConfigFile = path.resolve(__dirname, '..', 'action.json');
-var actionConfig = fs.readFileSync(actionConfigFile, 'utf-8');
+let actionConfig = fs.readFileSync(actionConfigFile, 'utf-8');
+const args = process.argv;
 
-module.exports.updateConfig = function() {
+if (args[2] && args[2] === '-f') {
+    updateConfig();
+}
+
+function updateConfig() {
 
     return ngrok.getPublicUrl().then(public_url => {
 
         if (actionConfig) {
-            actionConfig = actionConfig.replace(/https:\/\/[a-z0-9]+\.ngrok.io/, public_url);
+            actionConfig = actionConfig.replace(/https:\/\/[a-z0-9]+\.ngrok.io/g, public_url);
 
             fs.writeFileSync(actionConfigFile, actionConfig, {
                 encoding: 'utf-8'
@@ -30,3 +35,5 @@ module.exports.updateConfig = function() {
     })
 
 };
+
+module.exports.updateConfig = updateConfig;
