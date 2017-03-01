@@ -1,0 +1,19 @@
+resources:
+- type: compute.v1.instance
+  name: my-first-action
+  properties:
+    zone: us-central1-f
+    machineType: https://www.googleapis.com/compute/v1/projects/my-first-action/zones/us-central1-f/machineTypes/f1-micro
+    disks:
+    - deviceName: boot
+      type: PERSISTENT
+      boot: true
+      autoDelete: true
+      initializeParams:
+        sourceImage: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-8-jessie-v20160301
+    networkInterfaces:
+    - network: https://www.googleapis.com/compute/v1/projects/my-first-action/global/networks/default
+      # Access Config required to give the instance a public IP address
+      accessConfigs:
+      - name: External NAT
+        type: ONE_TO_ONE_NAT
