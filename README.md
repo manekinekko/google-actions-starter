@@ -14,7 +14,7 @@
     "versionLabel": "1.0.0",
     "agentInfo": {
         "languageCode": "en-US",
-        "projectId": "my first action",
+        "projectId": "my-first-action",
         "voiceName": "female_2"
     },
     "actions": [{
@@ -28,11 +28,11 @@
 }
 ```
 
-**NOTE:** if you're deploying your action on Google Cloud, use your Google Cloud Project ID instead of "my first action".
+**NOTE:** if you're deploying your action on Google Cloud, use your Google Cloud Project ID instead of "my-first-action".
 
 ## Package.json
 
-In the `package.json`, we provide you with the following (handy) scripts: 
+In the `package.json`, we provide you with the following (handy) scripts:
 
 ```json
 {
@@ -46,7 +46,7 @@ In the `package.json`, we provide you with the following (handy) scripts:
         "action:preview": "node ./scripts/preview_action.js",
         "action:config": "node ./scripts/update_action_config.js",
         "action:autopreview": "npm run action:config && npm run action:preview",
-        "action:deploy": "echo 'coming soon'",
+        "action:deploy": "gactions deploy --action_package action.json --project my-first-action",
         "release": "npm run build && npm version patch && git push --tags && git push && npm publish"
     }
 }
@@ -56,7 +56,7 @@ In the `package.json`, we provide you with the following (handy) scripts:
 
 Tools bunlded by GAS for devs needs:
 
-1. [gactions](https://developers.google.com/actions/tools/gactions-cli): is the command line interface that you use to preview, simulate, and publish an action package. If you encouter errors with the bundled binary, use the [gactions](https://developers.google.com/actions/tools/gactions-cli) from the official website. GAS includes this just for convenience. 
+1. [gactions](https://developers.google.com/actions/tools/gactions-cli): is the command line interface that you use to preview, simulate, and publish an action package. If you encouter errors with the bundled binary, use the [gactions](https://developers.google.com/actions/tools/gactions-cli) from the official website. GAS includes this just for convenience.
 2. [nodemon](https://github.com/remy/nodemon): Monitor for any changes in your node.js application and automatically restart the server.
 3. [ngrok](https://github.com/inconshreveable/ngrok): Introspected tunnels to localhost. Allows Google's server to access your local action (while in dev mode)
 
@@ -86,17 +86,45 @@ In order to make a [deep link invocation](https://developers.google.com/actions/
 1. an invocation query in your `action.json` (see [this example](https://github.com/manekinekko/google-actions-starter/blob/master/action.json#L17-L21))
 2. [an intent](https://github.com/manekinekko/google-actions-starter/blob/master/action.json#L18) (and its implementation [here](https://github.com/manekinekko/google-actions-starter/blob/master/lib/action.js#L58) and [here](https://github.com/manekinekko/google-actions-starter/blob/master/lib/action.js#L42-L51)) that will be triggered when your action will be launched with the invocation query.
 
-Then you just have to start your action like so: 
+Then you just have to start your action like so:
 
 ```
 talk to my first action to <ONE OF THE DEEP LINK QUERIES HERE>
 ```
 
-For instance: 
+For instance:
 
 ```
 talk to my first action to know what is the date
 ```
+
+## Deployment
+
+### Deploy the Fulfillment Endpoint
+
+After you have created a Conversation Action you must first deploy your fulfillment endpoint to any provider, such as Google Cloud:
+
+1. Create a new project in [Google Cloud Platform Projects](https://console.cloud.google.com/iam-admin/projects) and [enable billing](https://support.google.com/cloud/answer/6293499?hl=en).
+2. Set current project with `gcloud config set project my-first-action`.
+3. Replace `my-first-project` with your project ID in `vm.yaml` and run `gcloud deployment-manager deployments create production --config vm.yaml`. You can check your deployment with `gcloud deployment-manager deployments describe production`.
+4. Deploy your code with `npm run build && gcloud app deploy`.
+
+### Create an Actions API Project
+
+1. Create a [new Google Actions API project](https://console.developers.google.com/apis/dashboard).
+2. Configure the project in "Directory listing". It's important to get the sample invocations right, eg. "Ok Google, ask my first action to ...".
+
+### Deploy Action
+
+Deploying the action makes it usable by others by submitting it for approval with Google.
+
+**NOTE:** Once submitted you have to wait for your action to be rejected or approved, there's no way to un-submit an action without [contacting support](https://developers.google.com/actions/support/?requesttype=support&prio=low).
+
+1. Change the `httpExecution` URL(s) in action.json to the deployed fulfillment URL, eg. `https://my-first-action.appspot-preview.com`.
+2. Replace `my-first-action` by your action's ID in `package.json`.
+3. Run `npm run action:deploy`, which will register and deploy your action.
+
+See the [GAS documentation](https://developers.google.com/actions/distribute/deploy) for more details.
 
 ## Example projects
 

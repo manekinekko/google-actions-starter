@@ -2,7 +2,7 @@
     "versionLabel": "1.0.0",
     "agentInfo": {
         "languageCode": "en-US",
-        "projectId": "my first action",
+        "projectId": "my-first-action",
         "voiceName": "male_1"
     },
     "actions": [{

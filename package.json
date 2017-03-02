@@ -29,7 +29,7 @@
     "action:preview": "node ./scripts/preview_action.js",
     "action:config": "node ./scripts/update_action_config.js -f",
     "action:autopreview": "npm run action:config && npm run action:preview",
-    "action:deploy": "echo 'coming soon'",
+    "action:deploy": "gactions deploy --action_package action.json --project my-first-action",
     "release": "npm run build && npm version patch && git push --tags && git push && npm publish"
   },
   "dependencies": {
